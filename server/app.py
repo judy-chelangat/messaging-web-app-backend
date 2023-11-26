@@ -43,8 +43,33 @@ def messages():
         response=make_response(jsonify(message_dict),201)
         return response
     
+@app.route('/messages/<int:id>',methods=['PATCH','DELETE'])
+def messages_by_id(id):
+    message=Message.query.filter(Message.id == id).first()
 
+    if request.method == 'PATCH':
+        data = request.get_json()
+        for attr in data:
+            setattr(message,attr,data.get(attr))
 
+        db.session.add(message)
+        db.session.commit()
 
+        message_dict = message.to_dict()
+        response = make_response(jsonify(message_dict),200)
+        return response
+    
+    elif request.method == 'DELETE':
+        db.session.delete(message)
+        db.session.commit()
+
+        response_body={
+            'delete_successful':True,
+            'message':'Message deleted'
+        }
+        
+        response = make_response(response_body,200)
+        return response
+    
 if __name__ == '__main__':
     app.run(port=5555)
