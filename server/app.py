@@ -28,7 +28,21 @@ def messages():
 
         response =make_response(jsonify(all_messages),200)
         return response
+    
+    elif request.method == 'POST':
+        data=request.get_json()
+        new_message=Message(
+            body=data.get('body'),
+            username=data.get('username')
+        )
 
+        db.session.add(new_message)
+        db.session.commit()
+
+        message_dict=new_message.to_dict()
+        response=make_response(jsonify(message_dict),201)
+        return response
+    
 
 
 
