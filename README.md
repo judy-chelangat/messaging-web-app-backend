@@ -32,7 +32,6 @@ Follow these steps to set up and run the messaging web application:
 
 ### Backend Setup
 Open another terminal and navigate to the project's backend directory:
-    ```bash
 
 cd branch-messaging-backend
 cd server
@@ -46,7 +45,6 @@ pipenv shell</br>
 
 flask run </br>
 or
-
 </br>
 
 python app.py </br>  
@@ -54,9 +52,6 @@ python app.py </br>
 Ensure the backend server is running at http://localhost:5000.
 
 ## API Endpoint and Database
-Simulate customer messages using the provided API endpoint or web form.
-Store real customer service messages in the database.
-View and respond to individual messages through the application.
 
 GET /messages: returns an array of all messages as JSON, ordered by created_at in ascending order. </br></br>
 POST /messages: creates a new message with a body and username from params, and returns the newly created post as JSON. </br></br>
