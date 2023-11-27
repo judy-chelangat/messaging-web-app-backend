@@ -32,9 +32,9 @@ Follow these steps to set up and run the messaging web application:
 
 ### Backend Setup
 Open another terminal and navigate to the project's backend directory:
+git clone https://github.com/judy-chelangat/messaging-web-app-backend <br>
+cd messaging-web-app-backend
 
-cd branch-messaging-backend
-cd server
 ## Install dependencies and activate the virtual environment:
 
 
@@ -49,7 +49,7 @@ or
 
 python app.py </br>  
 
-Ensure the backend server is running at http://localhost:5000.
+Ensure the backend server is running at http://localhost:5555.
 
 ## API Endpoint and Database
 
