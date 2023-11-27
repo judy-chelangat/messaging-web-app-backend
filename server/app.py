@@ -5,12 +5,12 @@ from flask_cors import CORS
 
 from models import db, Message
 
-app = Flask(__name__)
-CORS(app)
+app = Flask(__name__) #flask instance
+CORS(app) #cross origin resource sharing
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.json.compact = False
+app.json.compact = False #human readable format
 
 migrate = Migrate(app, db)
 db.init_app(app)
@@ -35,7 +35,7 @@ def messages():
         db.session.add(message)
         db.session.commit()
 
-        response = make_response(
+        response = make_response( #jsonified 
             jsonify(message.to_dict()),
             201
         )
@@ -73,10 +73,10 @@ def messages_by_id(id):
             )
             return response
 
-        # Retrieve the message object before deleting it
+        # Retrieving  the message object before deleting it
         message = db.session.get(Message, id)
 
-        # Delete the message
+        # Deleting the message
         db.session.delete(message)
         db.session.commit()
 
