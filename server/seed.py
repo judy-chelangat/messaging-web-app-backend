@@ -86,7 +86,7 @@ def seed_messages():
 
     Message.query.delete()
     for message_text in messages_data:
-        username = rc(usernames)  # randomly choose a username from the list
+        username = rc(usernames)  # random username from the list
         message = Message(username=username, body=message_text)
         db.session.add(message)
     db.session.commit()
